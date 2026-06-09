@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #080808;
+    color: #f0f0f0;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+
+  /* Hide scrollbar utility */
+  .no-scroll::-webkit-scrollbar { display: none; }
+  .no-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@layer components {
+  /* ─── Phone frame ──────────────────────────────────────────── */
+  .phone-frame {
+    width: 390px;
+    height: 780px;
+    background: #0a0a0a;
+    border-radius: 50px;
+    border: 7px solid #1c1c1c;
+    box-shadow:
+      0 60px 120px -20px rgba(0, 0, 0, 0.95),
+      0 0 0 1px #2a2a2a,
+      inset 0 0 0 1px #111;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Notch */
+  .phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    background: #181818;
+    border-radius: 0 0 20px 20px;
+    z-index: 50;
+  }
+
+  /* ─── Dark card ────────────────────────────────────────────── */
+  .dark-card {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 16px;
+  }
+
+  /* ─── Credit card mock ─────────────────────────────────────── */
+  .credit-card {
+    background: linear-gradient(135deg, #161626 0%, #0f1f3e 55%, #132040 100%);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .credit-card::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -15%;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.18), transparent 70%);
+    pointer-events: none;
+  }
+
+  .credit-card::after {
+    content: '';
+    position: absolute;
+    bottom: -35%;
+    left: 10%;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.12), transparent 70%);
+    pointer-events: none;
+  }
+}
